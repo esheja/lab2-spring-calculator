@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="calculator">
+    <h1>Calculatrice</h1>
+
+    <form th:action="@{/calculer}" method="get">
+        <table>
+            <tr>
+                <td><label for="premierNombre">Premier nombre:</label></td>
+                <td><input type="number" step="any"
+                           id="premierNombre" name="premierNombre"
+                           th:value="${premierNombre}"></td>
+            </tr>
+            <tr>
+                <td><label for="secondNombre">Second nombre:</label></td>
+                <td><input type="number" step="any"
+                           id="secondNombre" name="secondNombre"
+                           th:value="${secondNombre}"></td>
+            </tr>
+            <tr>
+                <td><label for="resultat">Résultat:</label></td>
+                <td><input type="text" id="resultat" name="resultat"
+                           th:value="${resultat}" readonly></td>
+            </tr>
+        </table>
+
+        <div class="operations">
+            <button type="submit" name="operation" value="+">+</button>
+            <button type="submit" name="operation" value="-">-</button>
+            <button type="submit" name="operation" value="*">*</button>
+            <button type="submit" name="operation" value="/">/</button>
+        </div>
+    </form>
+
+    <p class="erreur" th:if="${messageErreur != ''}" th:text="${messageErreur}"></p>
+</div>
+</body>
+</html>
